@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  bwapp:
+    build: .
+    container_name: bwapp
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - bwapp_data:/var/lib/mysql
+
+volumes:
+  bwapp_data:
