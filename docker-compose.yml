@@ -20,8 +20,11 @@ services:
       - MODSEC_RULE_ENGINE=On
       - PARANOIA=1
       - PORT=8080
+      - SSL_PORT=8443
+      - CERTIFICATE_TYPE=SELF_SIGNED
     ports:
       - "80:8080"
+      - "443:8443"
 
 volumes:
   bwapp_data:
