@@ -22,9 +22,14 @@ services:
       - PORT=8080
       - SSL_PORT=8443
       - CERTIFICATE_TYPE=SELF_SIGNED
+      - RATE_LIMIT=${RATE_LIMIT}
+      - BURST_LIMIT=${BURST_LIMIT}
     ports:
       - "80:8080"
       - "443:8443"
+    volumes:
+      - ./nginx/templates/conf.d/ratelimit.conf.template:/etc/nginx/templates/conf.d/ratelimit.conf.template:ro
+      - ./nginx/templates/includes/proxy_backend.conf.template:/etc/nginx/templates/includes/proxy_backend.conf.template:ro
 
 volumes:
   bwapp_data:
