@@ -1,0 +1,8 @@
+# Rate limiting zone definition
+# $binary_remote_addr is used for efficient storage of client IPs
+# 10m zone can hold about 160,000 IPs
+# rate=${RATE_LIMIT} means the rate is defined via environment variable
+limit_req_zone $binary_remote_addr zone=bruteforce:10m rate=${RATE_LIMIT};
+
+# Status code to return when rate limit is exceeded
+limit_req_status 429;
